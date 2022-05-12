@@ -385,14 +385,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    892
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -480,7 +480,15 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-<p>1. </p>
+<ol>
+<li>上段代码的第一行告诉编译器想要使用 <code>iostream</code> 库，尖括号中的名字指出了一个标准库头文件。<code>#include</code> 是预处理指令，在编译器进行编译之前对该处进行代码文本的替换。一般来讲，预处理指令都写在源文件的开始位置。</li>
+<li>向流写入数据：<br><code>main</code> 函数体中的第一条语句是一个表达式，表达式通常由一个或多个运算对象和一个运算符组成，并且一个表达式必定会产生一个运算结果。该表达式使用了<strong>输出运算符</strong> <code>&lt;&lt;</code> 在标准输出上打印消息。<br>输出运算符 <code>&lt;&lt;</code> 接收两个运算对象，左侧的运算对象必须是一个标准输出对象，右侧的运算对象是要打印的值，输出运算符的运算结果是<strong>左侧运算对象</strong>。因此输出运算符可以像第一条语句将输出请求连接起来。<blockquote>
+<p><code>endl</code> 是一个被称为<strong>操纵符</strong>的特殊值，写入其作用是结束当前行，并将与设备关联的缓冲区中的内容刷到设备中。缓冲区刷新的作用是保证程序所有的输出都真正写入到流中，而不是存储在内存等待写入流。类似的操纵符还有 <code>flush</code> 和 <code>ends</code>, <code>flush</code> 的作用是仅刷新缓冲区，<code>ends</code> 的作用是插入 <code>null</code> 并刷新缓冲区。</p>
+</blockquote>
+</li>
+<li>从流读取数据：与向流写入数据类似</li>
+<li>输入输出语句中的 <code>std::</code> 指出 <code>cout</code>, <code>cin</code> 和 <code>endl</code> 都是定义在名为 <code>std</code> 的<strong>命名空间</strong>里的，其中 <code>::</code> 为<strong>作用域运算符</strong>。其作用是帮助我们避免使用与库中相同名称的冲突，标准库定义的所有名字都定义在 <code>std</code> 中。</li>
+</ol>
 
                 
             </div>
@@ -956,7 +964,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">892</span>&nbsp;字
+                class="white-color">1.4k</span>&nbsp;字
             
             
             
