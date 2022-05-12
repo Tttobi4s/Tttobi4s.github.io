@@ -392,7 +392,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -451,8 +451,16 @@
 <li>不同的操作系统</li>
 </ul>
 <ol>
-<li>编译完成后，运行可执行文件：<br>Windows 系统：可以忽略其扩展名<code>.exe</code><br>Linux 系统：需要使用全文件名，不可以忽略扩展名<code>.out</code></li>
-<li>获得程序的运行状态：<br>Windows 系统：<code>echo %ERRORLEVEL%</code><br>Linux 系统：<code>echo $?</code></li>
+<li>编译完成后，运行可执行文件：<ul>
+<li>Windows 系统：可以忽略其扩展名<code>.exe</code></li>
+<li>Linux 系统：需要使用全文件名，不可以忽略扩展名<code>.out</code></li>
+</ul>
+</li>
+<li>获得程序的运行状态：<ul>
+<li>Windows 系统：<code>echo %ERRORLEVEL%</code></li>
+<li>Linux 系统：<code>echo $?</code></li>
+</ul>
+</li>
 </ol>
 <ul>
 <li>GNU 编译器<br>编译命令：<code>g++ -o test test.cpp</code>, 其中 <code>-o test</code> 是编译器参数，指定可执行文件的文件名，Windows 系统是 <code>test.exe</code>，Unix 系统是 <code>test.out</code>。省略的话，会生成 <code>a.exe</code> 或 <code>a.out</code> 可执行文件。</li>
@@ -467,9 +475,18 @@
 <li>标准输入输出对象</li>
 </ul>
 <ol>
-<li>输入对象：<br> <code>cin</code>：标准输入</li>
-<li>输出对象：<br> <code>cout</code>：标准输出<br> <code>cerr</code>：输出警告和错误信息<br> <code>clog</code>：输出程序运行时的一般性信息<br>系统会将程序运行的窗口与标准输入输出对象关联起来（把它们想象成窗口），当读取 <code>cin</code> 对象时，数据将从程序正在运行的窗口读入；当写入 <code>cout</code>, <code>cerr</code> 和 <code>clog</code> 对象时，将会写到同一个窗口上。</li>
+<li>输入对象：<ul>
+<li><code>cin</code>：标准输入</li>
+</ul>
+</li>
+<li>输出对象：<ul>
+<li><code>cout</code>：标准输出</li>
+<li><code>cerr</code>：输出警告和错误信息</li>
+<li><code>clog</code>：输出程序运行时的一般性信息</li>
+</ul>
+</li>
 </ol>
+<p>系统会将程序运行的窗口与标准输入输出对象关联起来（把它们想象成窗口），当读取 <code>cin</code> 对象时，数据将从程序正在运行的窗口读入；当写入 <code>cout</code>, <code>cerr</code> 和 <code>clog</code> 对象时，将会写到同一个窗口上。</p>
 <ul>
 <li>一个使用 IO 库的程序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -482,12 +499,15 @@
 </ul>
 <ol>
 <li>上段代码的第一行告诉编译器想要使用 <code>iostream</code> 库，尖括号中的名字指出了一个标准库头文件。<code>#include</code> 是预处理指令，在编译器进行编译之前对该处进行代码文本的替换。一般来讲，预处理指令都写在源文件的开始位置。</li>
-<li>向流写入数据：<br><code>main</code> 函数体中的第一条语句是一个表达式，表达式通常由一个或多个运算对象和一个运算符组成，并且一个表达式必定会产生一个运算结果。该表达式使用了<strong>输出运算符</strong> <code>&lt;&lt;</code> 在标准输出上打印消息。<br>输出运算符 <code>&lt;&lt;</code> 接收两个运算对象，左侧的运算对象必须是一个标准输出对象，右侧的运算对象是要打印的值，输出运算符的运算结果是<strong>左侧运算对象</strong>。因此输出运算符可以像第一条语句将输出请求连接起来。<blockquote>
-<p><code>endl</code> 是一个被称为<strong>操纵符</strong>的特殊值，写入其作用是结束当前行，并将与设备关联的缓冲区中的内容刷到设备中。缓冲区刷新的作用是保证程序所有的输出都真正写入到流中，而不是存储在内存等待写入流。类似的操纵符还有 <code>flush</code> 和 <code>ends</code>, <code>flush</code> 的作用是仅刷新缓冲区，<code>ends</code> 的作用是插入 <code>null</code> 并刷新缓冲区。</p>
-</blockquote>
+<li>向流写入数据：<ul>
+<li><code>main</code> 函数体中的第一条语句是一个表达式，表达式通常由一个或多个运算对象和一个运算符组成，并且一个表达式必定会产生一个运算结果。该表达式使用了<strong>输出运算符</strong> <code>&lt;&lt;</code> 在标准输出上打印消息。</li>
+<li>输出运算符 <code>&lt;&lt;</code> 接收两个运算对象，左侧的运算对象必须是一个标准输出对象，右侧的运算对象是要打印的值，输出运算符的运算结果是<strong>左侧运算对象</strong>。因此输出运算符可以像第一条语句将输出请求连接起来。</li>
+<li><code>endl</code> 是一个被称为操纵符的特殊值，写入其作用是结束当前行，并将与设备关联的缓冲区中的内容刷到设备中。缓冲区刷新的作用是保证程序所有的输出都真正写入到流中，而不是存储在内存等待写入流。类似的操纵符还有 <code>flush</code> 和 <code>ends</code>, <code>flush</code> 的作用是仅刷新缓冲区，<code>ends</code> 的作用是插入 <code>null</code> 并刷新缓冲区。</li>
+</ul>
 </li>
 <li>从流读取数据：与向流写入数据类似</li>
 <li>输入输出语句中的 <code>std::</code> 指出 <code>cout</code>, <code>cin</code> 和 <code>endl</code> 都是定义在名为 <code>std</code> 的<strong>命名空间</strong>里的，其中 <code>::</code> 为<strong>作用域运算符</strong>。其作用是帮助我们避免使用与库中相同名称的冲突，标准库定义的所有名字都定义在 <code>std</code> 中。</li>
+<li>对于要输入输出的不同类型的对象，标准库实际上定义了不同版本的输入输出运算符来处理。</li>
 </ol>
 
                 
