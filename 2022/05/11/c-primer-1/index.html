@@ -3,8 +3,8 @@
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="demo6, Tobias&#39;s Blog">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="C++ Primer 第一章 开始, Tobias&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>demo6 | Tobias&#39;s Blog</title>
+    <title>C++ Primer 第一章 开始 | Tobias&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -29,13 +29,13 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">demo6</h1>
+                    <h1 class="description center-align post-title">C++ Primer 第一章 开始</h1>
                 </div>
             </div>
         </div>
@@ -344,12 +344,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/C/" class="post-category">
+                                C++
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -358,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-12
+                    2022-05-11
                 </div>
                 
 
@@ -372,14 +385,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    891
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -402,7 +415,72 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="1-1-编写一个简单的-C-程序"><a href="#1-1-编写一个简单的-C-程序" class="headerlink" title="1.1 编写一个简单的 C++ 程序"></a>1.1 编写一个简单的 C++ 程序</h2><ul>
+<li><code>main</code> 函数</li>
+</ul>
+<ol>
+<li>每个 C++ 程序都包含一个或者多个函数，其中一个必须是 <code>main</code> 函数，因为操作系统需要调用 <code>main</code> 函数来运行 C++ 程序。</li>
+<li><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<code>main</code> 函数也是函数，形如上段代码，一个函数必须由<strong>返回类型</strong>、<strong>函数名</strong>、<strong>形参列表</strong>和<strong>函数体</strong>四个部分组成。</li>
+<li><code>main</code> 函数的返回值被用来指示程序的运行状态，返回 0 表示成功，非 0 的返回值含义由系统定义，通常用来表示错误类型。</li>
+</ol>
+<ul>
+<li>类型</li>
+</ul>
+<ol>
+<li>上段代码中的 <code>int</code> 是一种<strong>内置类型</strong>，即语言自身定义的类型。</li>
+<li>一种类型既定义了数据元素的内容，还定义了这类数据上可以进行的运算。</li>
+</ol>
+<ul>
+<li>变量</li>
+</ul>
+<ol>
+<li>变量是<strong>地址空间</strong>的别名。</li>
+<li>程序所处理的数据都保存在变量中，而每个变量都有自己的类型，告诉编译器应该如何理解地址空间上的数据：是什么类型的变量，该变量能进行哪些运算。</li>
+</ol>
+<h3 id="1-1-1-编译、运行程序"><a href="#1-1-1-编译、运行程序" class="headerlink" title="1.1.1 编译、运行程序"></a>1.1.1 编译、运行程序</h3><ul>
+<li>不同的编译器编译源文件</li>
+</ul>
+<ol>
+<li>使用不同的后缀名表示 C++ 源文件，最常见的包括 <code>.cc</code>, <code>.cpp</code>, <code>.cxx</code>, <code>.cp</code> 及 <code>.C</code></li>
+<li>运行 C++ 程序的命令也不相同。</li>
+</ol>
+<ul>
+<li>不同的操作系统</li>
+</ul>
+<ol>
+<li>编译完成后，运行可执行文件：<br>Windows 系统：可以忽略其扩展名<code>.exe</code><br>Linux 系统：需要使用全文件名，不可以忽略扩展名<code>.out</code></li>
+<li>获得程序的运行状态：<br>Windows 系统：<code>echo %ERRORLEVEL%</code><br>Linux 系统：<code>echo $?</code></li>
+</ol>
+<ul>
+<li>GNU 编译器<br>编译命令：<code>g++ -o test test.cpp</code>, 其中 <code>-o test</code> 是编译器参数，指定可执行文件的文件名，Windows 系统是 <code>test.exe</code>，Unix 系统是 <code>test.out</code>。省略的话，会生成 <code>a.exe</code> 或 <code>a.out</code> 可执行文件。</li>
+</ul>
+<h2 id="1-2-初识输入输出"><a href="#1-2-初识输入输出" class="headerlink" title="1.2 初识输入输出"></a>1.2 初识输入输出</h2><ul>
+<li><code>iostream</code> 库<br>C++ 语言并未定义任何的输入输出(IO)语句，但是提供了一个全面的标准库来提供 IO 机制（以及很多其他设施），其中 <code>iostream</code> 库就是专门用于输入输出的标准库，它属于面向对象类库，包含两个基础类型：<code>istream</code> 和 <code>ostream</code>，分别表示输入和输出<strong>流</strong>。“流”表示字符序列，该字符序列从 IO 设备读出或写入 IO 设备。因为随着时间的推移，字符是顺序的产生和消耗的，所以称之为“流”。</li>
+</ul>
+<blockquote>
+<p>标准库<br>C++ 标准库可以分为两部分：<br><strong>标准函数库</strong>： 这个库是由通用的、独立的、不属于任何类的函数组成的。函数库继承自 C 语言。<br><strong>面向对象类库</strong>： 这个库是类及其相关函数的集合。</p>
+</blockquote>
+<ul>
+<li>标准输入输出对象</li>
+</ul>
+<ol>
+<li>输入对象：<br> <code>cin</code>：标准输入</li>
+<li>输出对象：<br> <code>cout</code>：标准输出<br> <code>cerr</code>：输出警告和错误信息<br> <code>clog</code>：输出程序运行时的一般性信息<br>系统会将程序运行的窗口与标准输入输出对象关联起来（把它们想象成窗口），当读取 <code>cin</code> 对象时，数据将从程序正在运行的窗口读入；当写入 <code>cout</code>, <code>cerr</code> 和 <code>clog</code> 对象时，将会写到同一个窗口上。</li>
+</ol>
+<ul>
+<li>一个使用 IO 库的程序<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Enter two numbers:"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> v1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> v2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cin <span class="token operator">>></span> v1 <span class="token operator">>></span> v2<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The sum of"</span> <span class="token operator">&lt;&lt;</span> v1 <span class="token operator">&lt;&lt;</span> <span class="token string">" and "</span> <span class="token operator">&lt;&lt;</span> v2 <span class="token operator">&lt;&lt;</span> <span class="token string">" is "</span> <span class="token operator">&lt;&lt;</span> v1 <span class="token operator">+</span> v2 <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -428,7 +506,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://tobi4s.cn/2022/05/12/demo6/">http://tobi4s.cn/2022/05/12/demo6/</a>
+                    <a href="http://tobi4s.cn/2022/05/11/c-primer-1/">http://tobi4s.cn/2022/05/11/c-primer-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -465,7 +543,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -633,36 +715,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/05/12/demo7/">
+                <a href="/2022/05/11/c-primer-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="demo7">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="C++ Primer 第一章 开始">
                         
-                        <span class="card-title">demo7</span>
+                        <span class="card-title">C++ Primer 第一章 开始</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            🐻
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-11
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Tobias
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -671,35 +767,48 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/12/demo5/">
+                <a href="/2022/05/11/c-primer-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="demo5">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="C++ Primer 第一章 开始">
                         
-                        <span class="card-title">demo5</span>
+                        <span class="card-title">C++ Primer 第一章 开始</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            🐻
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-11
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Tobias
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -846,7 +955,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">0</span>&nbsp;字
+                class="white-color">891</span>&nbsp;字
             
             
             
@@ -1121,7 +1230,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </body>
