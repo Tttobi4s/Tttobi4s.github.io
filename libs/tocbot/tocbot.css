@@ -37,7 +37,7 @@ a.toc-link {
 }
 
 .is-active-link {
-    font-weight: 700
+    font-weight: 700;
 }
 
 .toc-link::before {
