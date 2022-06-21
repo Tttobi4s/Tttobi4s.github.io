@@ -385,14 +385,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    4.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    16 分
                 </div>
                 
 
@@ -609,6 +609,43 @@ r <span class="token operator">=</span> <span class="token operator">&amp;</span
 <li>不同文件，不同的 <code>const</code> 对象，但是值一样<br> 首先理解编译器如何处理 <code>const</code> 对象，编译器会在<strong>编译阶段</strong>把用到该变量的地方全部替换为初始值，因此为了进行替换，编译器必须知道 <code>const</code> 对象的初始值，如果程序包含多个文件，每个用了 <code>const</code> 对象的文件都必须在<strong>编译阶段</strong>访问到初始值，由于只有在链接阶段才能访问到其他文件对于变量的定义，因此不能使用”一次定义，重复声明“的方法，每一个用到 <code>const</code> 对象的文件实际上都是分别独立地对其进行了定义，<code>const</code> 对象仅在文件内有效。通常的做法就是直接将 <code>const</code> 对象的<strong>定义</strong> <code>const int val = 10</code> 放在头文件中，在不同的文件中将会定义独立的变量。</li>
 <li>不同文件，同一个 <code>const</code> 对象<br> 某些时候有这样一种 <code>const</code> 对象，它的初始值不是一个常量表达式，但又确实有必要在文件中共享。不希望在不同的文件中生成独立的变量，我们希望 <code>const</code> 对象像其他对象一样工作，在一个文件中定义，在多个文件中声明并使用它。解决的办法就是在<strong>声明和定义</strong>都添加 <code>extern</code> 关键字。源文件中定义 <code>extern const int val = f()</code>, 头文件中声明 <code>extern const int val</code>。</li>
 </ol>
+<h3 id="2-4-1-const-的引用"><a href="#2-4-1-const-的引用" class="headerlink" title="2.4.1 const 的引用"></a>2.4.1 const 的引用</h3><p>&emsp;C++ 允许把引用绑定到常量对象上。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> <span class="token number">1024</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>r1 <span class="token operator">=</span> ci<span class="token punctuation">;</span> <span class="token comment">// 对常量的引用，简称常量引用</span>
+r1 <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// 错误 不允许通过常量引用修改常量的值</span>
+<span class="token keyword">int</span> <span class="token operator">&amp;</span>r2 <span class="token operator">=</span> ci<span class="token punctuation">;</span> <span class="token comment">// 错误 不允许用非常量引用指向常量，否则可以更改常量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="常量引用的特殊情况："><a href="#常量引用的特殊情况：" class="headerlink" title="常量引用的特殊情况："></a>常量引用的特殊情况：</h4><p>&emsp;一般来说，引用的类型要与被绑定的对象类型严格匹配，但是对于常量引用，在初始化常量引用时允许用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型即可。实际上，<strong>常量引用强调的是对引用可参与的操作进行了限定，而对于引用的对象本身是不是一个常量，是不是相同的类型等都没有做出要求</strong>。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">&amp;</span>r1 <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token comment">// 普通引用</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>r2 <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token comment">// 常量引用</span>
+r1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 正确 等价于 i = 0 </span>
+r2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>常量引用的作用<br>允许为一个常量引用绑定非常量的对象、字面值、其他类型变量、甚至是一个一般表达式。主要用于函数的形参，防止误操作。</p>
+</blockquote>
+<blockquote>
+<p>本质上，当一个常量引用绑定到其他类型上时，绑定的是一个<strong>临时量</strong>对象，该临时量对象与常量引用的类型一致。如果该引用不是常量，那么可以通过引用修改临时量的值，这是没有意义的，因此 C++ 将类型不匹配的引用视为非法操作。<br><code>double d = 3.14;</code><br><code>const int &amp;r = d;</code> // 正确 临时量 <code>const int temp = d; const int &amp;r = temp;</code></p>
+</blockquote>
+<h3 id="2-4-2-const-和指针"><a href="#2-4-2-const-和指针" class="headerlink" title="2.4.2 const 和指针"></a>2.4.2 const 和指针</h3><p>&emsp;与常量引用类似，C++ 允许存在指向常量的指针。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">double</span> pi <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span>cptr <span class="token operator">=</span> <span class="token operator">&amp;</span>pi<span class="token punctuation">;</span> <span class="token comment">// 指向常量的指针</span>
+<span class="token operator">*</span>cptr <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">// 错误 指向常量的指针不能用于修改常量</span>
+<span class="token keyword">double</span> <span class="token operator">*</span>ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>pi<span class="token punctuation">;</span> <span class="token comment">// 错误 不允许用普通指针指向常量，否则可以更改常量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="指向常量指针的特殊情况"><a href="#指向常量指针的特殊情况" class="headerlink" title="指向常量指针的特殊情况"></a>指向常量指针的特殊情况</h4><p>&emsp;类似地，指向常量的指针也没有规定所指的对象必须是一个常量，其强调的同样是不能通过该指针修改对象的值，但是不同于引用，仍然要求基本数据类型要一致。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> dval <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span>cptr <span class="token operator">=</span> <span class="token operator">&amp;</span>dval<span class="token punctuation">;</span>
+<span class="token operator">*</span>cptr <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span> <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="const-指针（常量指针）"><a href="#const-指针（常量指针）" class="headerlink" title="const 指针（常量指针）"></a>const 指针（常量指针）</h4><p>&emsp;指针是对象而引用不是，因此就像其他对象类型一样，允许将指针本身定为常量，意味着必须进行初始化，并且不能再修改，但是能够通过解引用符修改指向对象的值。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> ival <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span><span class="token keyword">const</span> ip <span class="token operator">=</span> <span class="token operator">&amp;</span>ival<span class="token punctuation">;</span> <span class="token comment">// 常量指针 从右向左解读</span>
+<span class="token operator">*</span>ip <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span> <span class="token comment">// 正确</span>
+<span class="token keyword">double</span> dval <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span><span class="token keyword">const</span> dp <span class="token operator">=</span> <span class="token operator">&amp;</span>dval<span class="token punctuation">;</span> <span class="token comment">// 指向常量的常量指针</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1081,7 +1118,7 @@ r <span class="token operator">=</span> <span class="token operator">&amp;</span
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.6k</span>&nbsp;字
+                class="white-color">7.4k</span>&nbsp;字
             
             
             
