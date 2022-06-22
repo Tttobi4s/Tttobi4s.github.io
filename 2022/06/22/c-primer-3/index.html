@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="C++ Primer 第一章 开始, Tobias&#39;s Blog">
+    <meta name="keywords" content="C++ Primer 第三章 字符串、向量和数组, Tobias&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++ Primer 第一章 开始 | Tobias&#39;s Blog</title>
+    <title>C++ Primer 第三章 字符串、向量和数组 | Tobias&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++ Primer 第一章 开始</h1>
+                    <h1 class="description center-align post-title">C++ Primer 第三章 字符串、向量和数组</h1>
                 </div>
             </div>
         </div>
@@ -371,28 +371,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-11
+                    2022-06-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-06-22
+                    2022-06-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    5 分
                 </div>
                 
 
@@ -415,166 +415,108 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-1-编写一个简单的-C-程序"><a href="#1-1-编写一个简单的-C-程序" class="headerlink" title="1.1 编写一个简单的 C++ 程序"></a>1.1 编写一个简单的 C++ 程序</h2><h3 id="main-函数"><a href="#main-函数" class="headerlink" title="main 函数"></a>main 函数</h3><ol>
-<li>每个 C++ 程序都包含一个或者多个函数，其中一个必须是 <code>main</code> 函数，因为操作系统需要调用 <code>main</code> 函数来运行 C++ 程序。</li>
-<li><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<code>main</code> 函数也是函数，形如上段代码，一个函数必须由<strong>返回类型</strong>、<strong>函数名</strong>、<strong>形参列表</strong>和<strong>函数体</strong>四个部分组成。</li>
-<li><code>main</code> 函数的返回值被用来指示程序的运行状态，返回 0 表示成功，非 0 的返回值含义由系统定义，通常用来表示错误类型。</li>
-</ol>
-<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ol>
-<li>上段代码中的 <code>int</code> 是一种<strong>内置类型</strong>，即语言自身定义的类型。</li>
-<li>一种类型既定义了数据元素的内容，还定义了这类数据上可以进行的运算。</li>
-</ol>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ol>
-<li>变量是<strong>地址空间</strong>的别名。</li>
-<li>程序所处理的数据都保存在变量中，而每个变量都有自己的类型，告诉编译器应该如何理解地址空间上的数据：<strong>是什么类型的变量，该变量能进行哪些运算。</strong></li>
-</ol>
-<h3 id="1-1-1-编译、运行程序"><a href="#1-1-1-编译、运行程序" class="headerlink" title="1.1.1 编译、运行程序"></a>1.1.1 编译、运行程序</h3><h4 id="不同的编译器编译源文件"><a href="#不同的编译器编译源文件" class="headerlink" title="不同的编译器编译源文件"></a>不同的编译器编译源文件</h4><ol>
-<li>使用不同的后缀名表示 C++ 源文件，最常见的包括 <code>.cc</code>, <code>.cpp</code>, <code>.cxx</code>, <code>.cp</code> 及 <code>.C</code></li>
-<li>运行 C++ 程序的命令也不相同。</li>
-</ol>
-<h4 id="不同的操作系统"><a href="#不同的操作系统" class="headerlink" title="不同的操作系统"></a>不同的操作系统</h4><ol>
-<li>编译完成后，运行可执行文件：<ul>
-<li>Windows 系统：可以忽略其扩展名<code>.exe</code></li>
-<li>Linux 系统：需要使用全文件名，不可以忽略扩展名<code>.out</code></li>
-</ul>
-</li>
-<li>获得程序的运行状态：<ul>
-<li>Windows 系统：<code>echo %ERRORLEVEL%</code></li>
-<li>Linux 系统：<code>echo $?</code></li>
-</ul>
-</li>
-</ol>
-<h4 id="GNU-编译器"><a href="#GNU-编译器" class="headerlink" title="GNU 编译器"></a>GNU 编译器</h4><p>&emsp;编译命令：<code>g++ -o test test.cpp</code>, 其中 <code>-o test</code> 是编译器参数，指定可执行文件的文件名，Windows 系统是 <code>test.exe</code>，Unix 系统是 <code>test.out</code>。省略的话，会生成 <code>a.exe</code> 或 <code>a.out</code> 可执行文件, 最后是源文件 <code>test.cpp</code> , 一般有多个源文件进行编译，然后链接目标文件生成可执行文件。</p>
-<h2 id="1-2-初识输入输出"><a href="#1-2-初识输入输出" class="headerlink" title="1.2 初识输入输出"></a>1.2 初识输入输出</h2><h3 id="iostream-库"><a href="#iostream-库" class="headerlink" title="iostream 库"></a>iostream 库</h3><p>&emsp;C++ 语言并未定义任何的输入输出语句，但是提供了一个全面的标准库来提供 IO 机制，其中 <code>iostream</code> 库就是专门用于输入输出的标准库，它属于面向对象类库，包含两个基础类型：<code>istream</code> 和 <code>ostream</code>，分别表示输入和输出<strong>流</strong>。“流”表示<strong>字符序列</strong>，该字符序列从 IO 设备读出或写入 IO 设备。因为随着时间的推移，字符是<strong>顺序地</strong>产生和消耗的，所以称之为“流”。</p>
-<blockquote>
-<p>标准库<br>C++ 标准库可以分为两部分：<br><strong>标准函数库</strong>： 这个库是由通用的、独立的、不属于任何类的函数组成的。函数库继承自 C 语言。<br><strong>面向对象类库</strong>： 这个库是类及其相关函数的集合。</p>
-</blockquote>
-<h3 id="标准输入输出对象"><a href="#标准输入输出对象" class="headerlink" title="标准输入输出对象"></a>标准输入输出对象</h3><ol>
-<li>输入对象：<ul>
-<li><code>cin</code>：标准输入</li>
-</ul>
-</li>
-<li>输出对象：<ul>
-<li><code>cout</code>：标准输出</li>
-<li><code>cerr</code>：输出警告和错误信息</li>
-<li><code>clog</code>：输出程序运行时的一般性信息</li>
-</ul>
-</li>
-</ol>
-<p>&emsp;系统会将程序运行的窗口与输入输出对象关联起来（把它们想象成窗口），当读取 <code>cin</code> 对象时，数据将从程序正在运行的窗口读入；当写入 <code>cout</code>, <code>cerr</code> 和 <code>clog</code> 对象时，将会写到程序运行的窗口上。</p>
-<blockquote>
-<p>文件重定向<br><code>test &lt;infile &gt;outfile</code><br>上述命令会让 <code>test.exe</code> 程序从一个名为 <code>infile</code> 的文件读取程序输入，并将输出结果写入到一个名为 <code>outfile</code> 的文件中。</p>
-</blockquote>
-<h3 id="一个使用-IO-库的程序"><a href="#一个使用-IO-库的程序" class="headerlink" title="一个使用 IO 库的程序"></a>一个使用 IO 库的程序</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Enter two numbers:"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> v1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> v2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    std<span class="token double-colon punctuation">::</span>cin <span class="token operator">>></span> v1 <span class="token operator">>></span> v2<span class="token punctuation">;</span>
-    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The sum of "</span> <span class="token operator">&lt;&lt;</span> v1 <span class="token operator">&lt;&lt;</span> <span class="token string">" and "</span> <span class="token operator">&lt;&lt;</span> v2 <span class="token operator">&lt;&lt;</span> <span class="token string">" is "</span> <span class="token operator">&lt;&lt;</span> v1 <span class="token operator">+</span> v2 <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li>上段代码的第一行 <code>#include</code> 是<strong>预处理指令</strong>，告诉编译器想要使用 <code>iostream</code> 库，尖括号中的名字指出该程序使用了一个标准库头文件(自定义头文件使用双引号)。</li>
-<li>向流写入数据：<ul>
-<li><code>main</code> 函数体中的第一条语句是一个表达式，表达式通常由一个或多个运算对象和一个运算符组成，并且一个表达式必定会产生一个运算结果。该表达式使用了<strong>输出运算符</strong> <code>&lt;&lt;</code> 在标准输出上打印消息。</li>
-<li>输出运算符 <code>&lt;&lt;</code> 接收两个运算对象，左侧的运算对象必须是一个标准输出对象，右侧的运算对象是要打印的值，输出运算符的运算结果是<strong>左侧运算对象</strong>。因此输出运算符可以像第一条语句将输出请求连接起来。</li>
-<li><code>endl</code> 是一个被称为<strong>操纵符</strong>的特殊值，写入其作用是结束当前行，并将与设备关联的缓冲区中的内容刷到设备中。缓冲区刷新的作用是保证程序所有的输出都真正写入到流中，而不是存储在内存等待写入流。类似的操纵符还有 <code>flush</code> 和 <code>ends</code>, <code>flush</code> 的作用是仅刷新缓冲区，<code>ends</code> 的作用是插入 <code>null</code> 并刷新缓冲区。</li>
-</ul>
-</li>
-<li>从流读取数据：与向流写入数据类似</li>
-<li>输入输出语句中的 <code>std::</code> 指出 <code>cout</code>, <code>cin</code> 和 <code>endl</code> 都是定义在名为 <code>std</code> 的<strong>命名空间</strong>里的，其中 <code>::</code> 为<strong>作用域运算符</strong>。其作用是帮助我们避免使用与库中相同名称所导致的冲突，标准库定义的所有名字都定义在 <code>std</code> 命名空间中。</li>
-<li>对于要输入输出的不同类型的对象，标准库实际上定义了不同版本的输入输出运算符来处理。</li>
-</ol>
-<h2 id="1-3-注释简介"><a href="#1-3-注释简介" class="headerlink" title="1.3 注释简介"></a>1.3 注释简介</h2><p>&emsp;代码中的注释能够帮助代码的读者更好地理解代码，而编译器会忽略掉注释，对程序的行为或者性能不会带来任何的影响。</p>
+                <h2 id="3-1-命名空间的-using-声明"><a href="#3-1-命名空间的-using-声明" class="headerlink" title="3.1 命名空间的 using 声明"></a>3.1 命名空间的 using 声明</h2><p>&emsp;<code>using</code> 声明可以更简单地使用命名空间中的成员。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token comment">/*
- * 简单函数
- * 读取两个数，并求之积
- */</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token comment">// 提示用户输入两个数</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Please enter two numbers:"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> n1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> n2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    cin <span class="token operator">>></span> n1 <span class="token operator">>></span> n2<span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The product of the two numbers is "</span> <span class="token operator">&lt;&lt;</span> n1 <span class="token operator">*</span> n2 <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出结果</span>
-    <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"pause"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span> 
+<span class="token comment">// 单独使用 </span>
+<span class="token comment">// using std::cin; </span>
+<span class="token comment">// using std::cout;</span>
+<span class="token comment">// using std::endl;</span>
 
-<h2 id="1-4-控制流"><a href="#1-4-控制流" class="headerlink" title="1.4 控制流"></a>1.4 控制流</h2><p>&emsp;程序的语句不光是可以顺序执行的，程序设计语言提供了多种不同的控制流语句，允许我们写出更为复杂的执行路径。</p>
-<h3 id="1-4-1-while-语句"><a href="#1-4-1-while-语句" class="headerlink" title="1.4.1 while 语句"></a>1.4.1 while 语句</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>start <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>start <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        sum <span class="token operator">+=</span> start<span class="token punctuation">;</span>
-        <span class="token operator">++</span>start<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    cout <span class="token operator">&lt;&lt;</span> sum <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> i<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>&emsp;<code>while</code> 循环的执行过程是交替地检测 <code>condition</code> 条件和执行关联的语句 <code>statement</code>, 直至 <code>condition</code> 为假时停止。<br>&emsp;上端代码中有两个特殊的运算符：</p>
-<ol>
-<li>复合赋值运算符 <code>+=</code><br><code>sum += start</code> 等价于 <code>sum = sum + start</code></li>
-<li>(前缀)递增运算符 <code>++</code><br><code>++start</code> 等价于 <code>start = start + 1</code> 等价于 <code>start += 1</code></li>
-</ol>
-<h3 id="1-4-2-for-语句"><a href="#1-4-2-for-语句" class="headerlink" title="1.4.2 for 语句"></a>1.4.2 for 语句</h3><p>&emsp;观察上面的代码，这种在循环条件中检测变量，在循环体中递增变量的模式使用的非常频繁，因此诞生了第二种循环语句 <code>for</code> 语句来简化这种模式的语句。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        sum <span class="token operator">+=</span> i<span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> sum <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<h3 id="头文件不应包含-using-声明"><a href="#头文件不应包含-using-声明" class="headerlink" title="头文件不应包含 using 声明"></a>头文件不应包含 using 声明</h3><p>&emsp;因为头文件的内容会在预处理阶段拷贝到其他文件中，如果头文件中有 <code>using</code> 声明，那么使用该头文件的所有文件都有这个声明，由于不经意间拷贝过去，有时候就会导致名称冲突。</p>
+<h2 id="3-2-标准库类型-string"><a href="#3-2-标准库类型-string" class="headerlink" title="3.2 标准库类型 string"></a>3.2 标准库类型 string</h2><p>&emsp;<code>string</code> 表示<strong>可变长的字符序列</strong>，使用 <code>string</code> 类型必须首先包含 <code>string</code> 头文件。</p>
+<h3 id="3-2-1-定义和初始化-string-对象"><a href="#3-2-1-定义和初始化-string-对象" class="headerlink" title="3.2.1 定义和初始化 string 对象"></a>3.2.1 定义和初始化 string 对象</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string s1<span class="token punctuation">;</span> <span class="token comment">// 默认初始化 s1 是一个空字符串</span>
+string <span class="token function">s2</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// s2 是 s1 的副本</span>
+string s2 <span class="token operator">=</span> s1<span class="token punctuation">;</span> <span class="token comment">// 等价于 string s2(s1)</span>
+string <span class="token function">s3</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//s3 是字面值 "value" 的副本 除了最后的'\0'都进行拷贝</span>
+string s3 <span class="token operator">=</span> <span class="token string">"value"</span><span class="token punctuation">;</span> <span class="token comment">//等价于 string s3("value")</span>
+string <span class="token function">s4</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span><span class="token char">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 直接初始化 为连续的 n 个字符 c 组成的串</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-2-2-string-对象上的操作"><a href="#3-2-2-string-对象上的操作" class="headerlink" title="3.2.2 string 对象上的操作"></a>3.2.2 string 对象上的操作</h3><p>&emsp;一个类规定初始化的方式后，还要定义对象上所能进行的操作。</p>
+<h4 id="读写-string-对象"><a href="#读写-string-对象" class="headerlink" title="读写 string 对象"></a>读写 string 对象</h4><p>&emsp;在执行读取操作时，<code>string</code> 对象会自动忽略开头的空白（制表符、空格、换行符），从第一个非空字符读起，直到遇见下一个空白。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    string s<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> s<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="读取未知数量的-string-对象"><a href="#读取未知数量的-string-对象" class="headerlink" title="读取未知数量的 string 对象"></a>读取未知数量的 string 对象</h5><p>&emsp;每一次都会将中间的空白忽略掉，直到遇到 EOF 或者非法输入。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    string word<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> word<span class="token punctuation">)</span>
+        <span class="token comment">// 输入: "     123     456     789     "</span>
+        <span class="token comment">// 输出:</span>
+        <span class="token comment">// 123 </span>
+        <span class="token comment">// 456 </span>
+        <span class="token comment">// 789 </span>
+        cout <span class="token operator">&lt;&lt;</span> word <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>&emsp;<code>for</code>循环相比 <code>while</code> 循环要更复杂一些，它包括循环头和循环体，循环头控制的是循环的次数，包含初始化语句，循环条件以及一个表达式。在第一次循环开始之前会执行初始化语句，在每次执行完循环体中的语句之后，还会执行循环头中的表达式，一般是循环变量的递增或者递减。值得注意的是该例中的 <code>for</code> 语句在循环头定义了一个 <code>int</code> 型的对象 <code>i</code> , 该对象<strong>只能在循环中使用，在循环结束之后不能使用</strong>。</p>
-<h3 id="1-4-3-读取数量不定的输入数据"><a href="#1-4-3-读取数量不定的输入数据" class="headerlink" title="1.4.3 读取数量不定的输入数据"></a>1.4.3 读取数量不定的输入数据</h3><p>&emsp;可以使用 <code>while</code> 循环和输入运算符实现读取数量不定的输入数据。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> val <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> val<span class="token punctuation">)</span>
-        sum <span class="token operator">+=</span> val<span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> sum <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<h5 id="使用-getline-读取一整行"><a href="#使用-getline-读取一整行" class="headerlink" title="使用 getline 读取一整行"></a>使用 getline 读取一整行</h5><p>&emsp;<code>getline</code> 函数的参数是一个输入流和一个 <code>string</code> 对象，函数会从给定的输入流中读取内容，直到遇到<strong>换行符</strong>为止，实际上会把换行符也读取，然后将除了换行符以外的内容存入到 <code>string</code> 对象中。如果只有换行符，那么所得的结果就是一个空字符串。返回流参数，因此也能够用在 <code>while</code> 循环的条件判断中。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    string line<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> line<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        cout <span class="token operator">&lt;&lt;</span> line <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// line 中不包含换行符</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>&emsp;在前面的学习中得知，输入运算符的结果是左侧的对象，因此，每次循环的条件都是 <code>cin</code> 对象。当我们使用 <code>cin</code> 对象作为条件进行判断时，检测的是<strong>流的状态</strong>。只有当流遇到<strong>文件结束符(EOF)<strong>或者遇到一个</strong>无效的输入</strong>时，流的状态会变为无效，条件判断为假。在Windows系统中, 输入文件结束符的方法是 <code>Ctrl + Z</code>, Mac OS X系统中是 <code>Ctrl + D</code>。</p>
-<h3 id="1-4-4-if-语句"><a href="#1-4-4-if-语句" class="headerlink" title="1.4.4 if 语句"></a>1.4.4 if 语句</h3><p>&emsp;直接通过一个例子来学习 <code>if</code> 语句。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> curVal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> val <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> curVal<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>cin <span class="token operator">>></span> val<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>val <span class="token operator">==</span> curVal<span class="token punctuation">)</span>
-                <span class="token operator">++</span>cnt<span class="token punctuation">;</span>
-            <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-                cout <span class="token operator">&lt;&lt;</span> curVal <span class="token operator">&lt;&lt;</span> <span class="token string">" occurs "</span> <span class="token operator">&lt;&lt;</span> cnt <span class="token operator">&lt;&lt;</span> <span class="token string">" times"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-                curVal <span class="token operator">=</span> val<span class="token punctuation">;</span>
-                cnt <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        cout <span class="token operator">&lt;&lt;</span> curVal <span class="token operator">&lt;&lt;</span> <span class="token string">" occurs "</span> <span class="token operator">&lt;&lt;</span> cnt <span class="token operator">&lt;&lt;</span> <span class="token string">" times"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+<h4 id="string-的-empty-和-size-操作"><a href="#string-的-empty-和-size-操作" class="headerlink" title="string 的 empty 和 size 操作"></a>string 的 empty 和 size 操作</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    string line<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> line<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>line<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 返回布尔值</span>
+            cout <span class="token operator">&lt;&lt;</span> line <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">80</span><span class="token punctuation">)</span> <span class="token comment">// 返回字符的个数</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"too long"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="1-5-代码风格"><a href="#1-5-代码风格" class="headerlink" title="1.5 代码风格"></a>1.5 代码风格</h2><p>&emsp;本人所坚持的代码风格是只有函数界定符进行换行，其他不换行。</p>
+<h5 id="string-size-type-类型"><a href="#string-size-type-类型" class="headerlink" title="string::size_type 类型"></a>string::size_type 类型</h5><p>&emsp;实际上，<code>size</code> 函数返回的是一个 <code>string::size_type</code> 类型的<strong>无符号数</strong>。它定义在 <code>string</code> 中，用来体现<strong>标准库类型与机器无关的特性</strong>。要注意的是，返回的是一个无符号数，如果表达式中混带了带符号数和该数，那么有可能产生意想不到的错误。一般使用类型说明符 <code>auto</code> 和类型指示符 <code>decltype</code> 来推断变量的类型。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">auto</span> len <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> len <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="比较-string-对象"><a href="#比较-string-对象" class="headerlink" title="比较 string 对象"></a>比较 string 对象</h4><p>&emsp;<code>string</code> 对象的比较遵循<strong>字典序</strong>，先比较字符(z &gt; a)，再比较长短(aa &gt; a)，对大小写敏感(A &gt; a)。</p>
+<h4 id="两个-string-对象相加"><a href="#两个-string-对象相加" class="headerlink" title="两个 string 对象相加"></a>两个 string 对象相加</h4><p>&emsp;两个 <code>string</code> 对象相加得到一个<strong>新的</strong> <code>string</code> 对象，由两个 <code>string</code> 对象连接而成，同时还支持 <code>+=</code> 复合运算符。</p>
+<h5 id="字面值和-string-对象相加"><a href="#字面值和-string-对象相加" class="headerlink" title="字面值和 string 对象相加"></a>字面值和 string 对象相加</h5><p>&emsp;当把 <code>string</code> 对象和字符字面值和字符串字面值混合在一条语句中使用时，必须确保每个 <code>+</code> 两侧的运算对象至少有一个是 <code>string</code> 对象。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string s1 <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">,</span> s2 <span class="token operator">=</span> <span class="token string">"world"</span><span class="token punctuation">;</span>
+string s3 <span class="token operator">=</span> s1 <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> s2<span class="token punctuation">;</span> 
+string s4 <span class="token operator">=</span> <span class="token string">"hello"</span> <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> s2<span class="token punctuation">;</span> <span class="token comment">// 错误 两个字符串字面值相加</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-2-3-处理-string-对象中的字符"><a href="#3-2-3-处理-string-对象中的字符" class="headerlink" title="3.2.3 处理 string 对象中的字符"></a>3.2.3 处理 string 对象中的字符</h3><p>&emsp;在 <code>cctype</code> 头文件中定义了一组标准库函数。</p>
+<ul>
+<li><code>isalpha(c)</code>: 当 c 是字母时返回 <code>true</code></li>
+<li><code>isdigit(c)</code>: 当 c 是数字时返回 <code>true</code></li>
+<li><code>ispunct(c)</code>: 当 c 是标点符号时返回 <code>true</code></li>
+<li><code>islower(c)</code>: 当 c 是小写字母时返回 <code>true</code></li>
+<li><code>isupper(c)</code>: 当 c 是大写字母时返回 <code>true</code></li>
+<li><code>tolower(c)</code>: 当 c 是大写字母时返回其小写字母，否则原样返回。</li>
+<li><code>toupper(c)</code>: 当 c 是小写字母时返回其大写字母，否则原样返回。</li>
+</ul>
+<blockquote>
+<p>C++ 将从属于 C 语言的标准库的文件由 <code>name.h</code> 命名为 <code>cname</code>, 注意 <code>cname</code> 其中定义的名字都从属于 <code>std</code> 标准库命名空间，但是 <code>name.h</code> 则不是。因此，为了方便，统一使用 <code>cname</code>。</p>
+</blockquote>
+<h4 id="使用范围-for-语句"><a href="#使用范围-for-语句" class="headerlink" title="使用范围 for 语句"></a>使用范围 for 语句</h4><p>&emsp;C++ 提供了范围 <code>for</code> 语句，能够依次遍历序列中的每个元素并执行某种操作。语法格式如下，<code>expression</code> 是一个序列对象，<code>declaration</code> 是一个循环变量，用于访问序列中的每个元素。每次迭代，<code>declaration</code> 部分都会初始化为<strong>下一个元素</strong>。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">for</span> <span class="token punctuation">(</span>declaration<span class="token operator">:</span> expression<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    statement
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="使用范围-for-语句改变字符串中的字符"><a href="#使用范围-for-语句改变字符串中的字符" class="headerlink" title="使用范围 for 语句改变字符串中的字符"></a>使用范围 for 语句改变字符串中的字符</h5><p>&emsp;如果想要改变字符串中的字符，需要循环变量定义为引用类型。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string <span class="token function">s</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>c <span class="token operator">:</span> s<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    c <span class="token operator">=</span> <span class="token function">toupper</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// HELLO, WORLD!!!</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="只处理一部分字符"><a href="#只处理一部分字符" class="headerlink" title="只处理一部分字符"></a>只处理一部分字符</h4><p>&emsp;C++ 提供两种方法处理字符串中的单个或者部分字符，一种是使用下标，另一种是使用迭代器，后面会进一步学习。</p>
 
                 
             </div>
@@ -601,7 +543,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://tobi4s.cn/2022/05/11/c-primer-1/">http://tobi4s.cn/2022/05/11/c-primer-1/</a>
+                    <a href="http://tobi4s.cn/2022/06/22/c-primer-3/">http://tobi4s.cn/2022/06/22/c-primer-3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -810,17 +752,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/06/21/c-header/">
+                <a href="/2022/06/22/c-primer-3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="理解 C++ 中的头文件">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="C++ Primer 第三章 字符串、向量和数组">
                         
-                        <span class="card-title">理解 C++ 中的头文件</span>
+                        <span class="card-title">C++ Primer 第三章 字符串、向量和数组</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -830,9 +773,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -845,6 +788,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -860,16 +804,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/11/c-primer-1/">
+                <a href="/2022/06/21/c-primer-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="C++ Primer 第一章 开始">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="C++ Primer 第二章 变量和基本类型">
                         
-                        <span class="card-title">C++ Primer 第一章 开始</span>
+                        <span class="card-title">C++ Primer 第二章 变量和基本类型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -880,7 +824,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-21
                             </span>
                         <span class="publish-author">
                             
@@ -894,7 +838,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
