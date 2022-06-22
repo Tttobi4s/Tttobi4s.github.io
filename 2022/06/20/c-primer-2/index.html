@@ -378,21 +378,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-06-21
+                    2022-06-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    22 分
                 </div>
                 
 
@@ -607,7 +607,7 @@ r <span class="token operator">=</span> <span class="token operator">&amp;</span
 <h2 id="2-4-const-限定符"><a href="#2-4-const-限定符" class="headerlink" title="2.4 const 限定符"></a>2.4 const 限定符</h2><p>&emsp;<code>const</code> 修饰的对象内容不能被改变，因此 <code>const</code> 对象一定要进行初始化。</p>
 <h3 id="默认状态下，-const-对象仅在文件内有效"><a href="#默认状态下，-const-对象仅在文件内有效" class="headerlink" title="默认状态下， const 对象仅在文件内有效"></a>默认状态下， const 对象仅在文件内有效</h3><ol>
 <li>不同文件，不同的 <code>const</code> 对象，但是值一样<br> 首先理解编译器如何处理 <code>const</code> 对象，编译器会在<strong>编译阶段</strong>把用到该变量的地方全部替换为初始值，因此为了进行替换，编译器必须知道 <code>const</code> 对象的初始值，如果程序包含多个文件，每个用了 <code>const</code> 对象的文件都必须在<strong>编译阶段</strong>访问到初始值，由于只有在链接阶段才能访问到其他文件对于变量的定义，因此不能使用”一次定义，重复声明“的方法，每一个用到 <code>const</code> 对象的文件实际上都是分别独立地对其进行了定义，<code>const</code> 对象仅在文件内有效。通常的做法就是直接将 <code>const</code> 对象的<strong>定义</strong> <code>const int val = 10</code> 放在头文件中，在不同的文件中将会定义独立的变量。</li>
-<li>不同文件，同一个 <code>const</code> 对象<br> 某些时候有这样一种 <code>const</code> 对象，它的初始值不是一个常量表达式，但又确实有必要在文件中共享。不希望在不同的文件中生成独立的变量，我们希望 <code>const</code> 对象像其他对象一样工作，在一个文件中定义，在多个文件中声明并使用它。解决的办法就是在<strong>声明和定义</strong>都添加 <code>extern</code> 关键字。源文件中定义 <code>extern const int val = f()</code>, 头文件中声明 <code>extern const int val</code>。</li>
+<li>不同文件，同一个 <code>const</code> 对象<br> 某些时候有这样一种 <code>const</code> 对象，它的初始值不是一个<strong>常量表达式</strong>，但又确实有必要在文件中共享。因为当运行时确定结果时，所有的目标文件已经链接好，不再希望在不同的文件中生成独立的变量，我们希望 <code>const</code> 对象像其他对象一样工作，在一个文件中定义，在多个文件中声明并使用它。解决的办法就是在<strong>声明和定义</strong>都添加 <code>extern</code> 关键字。源文件中定义 <code>extern const int val = f()</code>, 头文件中声明 <code>extern const int val</code>。</li>
 </ol>
 <h3 id="2-4-1-const-的引用"><a href="#2-4-1-const-的引用" class="headerlink" title="2.4.1 const 的引用"></a>2.4.1 const 的引用</h3><p>&emsp;C++ 允许把引用绑定到常量对象上。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> <span class="token number">1024</span><span class="token punctuation">;</span>
@@ -639,13 +639,85 @@ r2 <span class="token operator">=</span> <span class="token number">0</span><spa
 <span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span>cptr <span class="token operator">=</span> <span class="token operator">&amp;</span>dval<span class="token punctuation">;</span>
 <span class="token operator">*</span>cptr <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span> <span class="token comment">// 错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="const-指针（常量指针）"><a href="#const-指针（常量指针）" class="headerlink" title="const 指针（常量指针）"></a>const 指针（常量指针）</h4><p>&emsp;指针是对象而引用不是，因此就像其他对象类型一样，允许将指针本身定为常量，意味着必须进行初始化，并且不能再修改，但是能够通过解引用符修改指向对象的值。</p>
+<h4 id="const-指针（常量指针）"><a href="#const-指针（常量指针）" class="headerlink" title="const 指针（常量指针）"></a>const 指针（常量指针）</h4><p>&emsp;指针是对象而引用不是，因此就像其他对象类型一样，允许将指针本身定为常量，意味着<strong>必须进行初始化，并且不能再修改</strong>，但是能够通过解引用符修改指向对象的值。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> ival <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span><span class="token keyword">const</span> ip <span class="token operator">=</span> <span class="token operator">&amp;</span>ival<span class="token punctuation">;</span> <span class="token comment">// 常量指针 从右向左解读</span>
 <span class="token operator">*</span>ip <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span> <span class="token comment">// 正确</span>
 <span class="token keyword">double</span> dval <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">double</span> <span class="token operator">*</span><span class="token keyword">const</span> dp <span class="token operator">=</span> <span class="token operator">&amp;</span>dval<span class="token punctuation">;</span> <span class="token comment">// 指向常量的常量指针</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="2-4-3-顶层-const-和底层-const"><a href="#2-4-3-顶层-const-和底层-const" class="headerlink" title="2.4.3 顶层 const 和底层 const"></a>2.4.3 顶层 const 和底层 const</h3><p>&emsp;顶层 <code>const</code> 表示任意的对象是常量，底层 <code>const</code> 则与指针和引用等复合类型的基本类型相关，表示该指针或者引用有没有能力修改所指对象的值。因为指针是对象，因此存在顶层和底层 <code>const</code> 指针。<br>&emsp;对于底层 <code>const</code> 的拷贝有以下限制，拷贝的过程不能赋予修改权限。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span>p1 <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span> <span class="token comment">// 底层 const</span>
+<span class="token keyword">int</span> <span class="token operator">*</span><span class="token keyword">const</span> p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span> <span class="token comment">// 顶层 const</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token keyword">const</span> p3 <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span> <span class="token comment">// 底层和顶层 const</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> p1<span class="token punctuation">;</span> <span class="token comment">// 错误 不能将底层 const 拷贝到普通指针</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p4 <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+p1 <span class="token operator">=</span> p4<span class="token punctuation">;</span> <span class="token comment">// 正确 允许将普通指针拷贝到底层 const</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-4-4-constexpr-和常量表达式"><a href="#2-4-4-constexpr-和常量表达式" class="headerlink" title="2.4.4 constexpr 和常量表达式"></a>2.4.4 constexpr 和常量表达式</h3><p>&emsp;常量表达式是指<strong>值不会改变</strong>并且<strong>在编译过程中就能得到计算结果</strong>的表达式。</p>
+<h4 id="constexpr-变量"><a href="#constexpr-变量" class="headerlink" title="constexpr 变量"></a>constexpr 变量</h4><p>&emsp;C++ 11 新标准规定，允许将一个变量声明为 <code>constexpr</code> 以便由编译器来验证变量的值是否是一个常量表达式。形如 <code>constexpr int sz = size()</code> 这样的语句同样有可能正确，在后面的学习中会了解到一种 <code>constexpr</code> 函数，它能够在编译阶段就计算其结果，因此能够初始化 <code>constexpr</code> 变量。</p>
+<h4 id="字面值类型"><a href="#字面值类型" class="headerlink" title="字面值类型"></a>字面值类型</h4><p>&emsp;能够用来声明 <code>constexpr</code> 变量的类型叫字面值类型，由于 <code>constexpr</code> 变量的特点，这种类型应当是显而易见，容易得到的，如算术类型，引用和指针。<br>&emsp;对于指针和引用能够声明为 <code>constexpr</code> 变量，但是对它们的初始值有一定的限制。</p>
+<ol>
+<li><code>constexpr</code> 指针和引用必须指向某个<strong>固定地址</strong>的对象：<ul>
+<li>全局变量：定义在所有函数体外的</li>
+<li>静态局部变量：在函数体内用 <code>static</code> 关键字修饰的</li>
+</ul>
+</li>
+<li><code>constexpr</code> 指针的初始值还可以是 <code>nullptr</code></li>
+</ol>
+<h4 id="指针和-constexpr"><a href="#指针和-constexpr" class="headerlink" title="指针和 constexpr"></a>指针和 constexpr</h4><p>&emsp;用 <code>constexpr</code> 修饰的指针是<strong>顶层</strong> <code>const</code> ，表示其值不会改变，必须初始化，在编译期间就能够确定结果。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">static</span> <span class="token keyword">int</span> ival <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">constexpr</span> <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span> <span class="token comment">// 指向常量的常量指针</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="2-5-处理类型"><a href="#2-5-处理类型" class="headerlink" title="2.5 处理类型"></a>2.5 处理类型</h2><h3 id="2-5-1-类型别名"><a href="#2-5-1-类型别名" class="headerlink" title="2.5.1 类型别名"></a>2.5.1 类型别名</h3><p>&emsp;类型别名是一个名字，它是某种类型的同义词，使用类型别名能够让复杂的类型名称变得简单明了，方便记忆和使用。<br>&emsp;使用类型别名的两种方法：</p>
+<ol>
+<li><code>typedef</code><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">double</span> wages<span class="token punctuation">;</span> <span class="token comment">// wages 是 double 的别名</span>
+<span class="token keyword">typedef</span> wages <span class="token operator">*</span>p<span class="token punctuation">;</span> <span class="token comment">// 支持类型修饰符实现复合类型的别名，p 是 double* 的别名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><code>using =</code><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">using</span> SI <span class="token operator">=</span> Sales_item<span class="token punctuation">;</span> <span class="token comment">// SI 是 Sales_item 的别名</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<h4 id="指针、常量和类型别名"><a href="#指针、常量和类型别名" class="headerlink" title="指针、常量和类型别名"></a>指针、常量和类型别名</h4><p>&emsp;当使用复合类型的别名指代常量以及复合类型时，容易产生错误。方法是可以将 <code>pstring</code> 直接看成一个基本数据类型，如 <code>int</code>，理解其整体含义，然后再进行替换。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">char</span> <span class="token operator">*</span>pstring<span class="token punctuation">;</span> <span class="token comment">// pstring 是 char* 的别名</span>
+<span class="token keyword">const</span> pstring cstr <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// cstr 是指向 char 的常量指针，const 是顶层</span>
+<span class="token keyword">const</span> pstring <span class="token operator">*</span>ps<span class="token punctuation">;</span> <span class="token comment">// cstr 是一个指针，指向的对象是指向 char 的常量指针，const 是底层</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-5-2-auto-类型说明符"><a href="#2-5-2-auto-类型说明符" class="headerlink" title="2.5.2 auto 类型说明符"></a>2.5.2 auto 类型说明符</h3><p>&emsp;在编程时需要将表达式的值赋给变量，声明变量的时候就需要确定表达式的类型，C++ 11 新标准引入了 <code>auto</code> 类型说明符，用它让编译器替我们去分析表达式所属的类型。因此，<code>auto</code> 定义的变量必须有初始值，通过初始值确定类型。</p>
+<h4 id="auto-的使用"><a href="#auto-的使用" class="headerlink" title="auto 的使用"></a>auto 的使用</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>r <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token comment">// i 是整型，r 是整型引用</span>
+<span class="token keyword">auto</span> sz <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> pi <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span> <span class="token comment">// 错误 多个声明符的时候，类型要保持一致</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="复合类型、常量和-auto"><a href="#复合类型、常量和-auto" class="headerlink" title="复合类型、常量和 auto"></a>复合类型、常量和 auto</h4><p>&emsp;当涉及复合类型、常量和 <code>auto</code> 时的情况往往比较复杂，遵循的基本规则:</p>
+<ol>
+<li>如果声明的不是<strong>复合类型</strong>， <code>auto</code> 会忽略顶层 <code>const</code> ， 保留底层 <code>const</code>。</li>
+<li>如果声明的是<strong>复合类型</strong>，那么同样需要考虑顶层 <code>const</code>。<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>cr <span class="token operator">=</span> ci<span class="token punctuation">,</span> <span class="token operator">*</span>cp <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span> <span class="token comment">// 常量 常量引用 指向常量的指针</span>
+<span class="token keyword">auto</span> a <span class="token operator">=</span> cp<span class="token punctuation">;</span> <span class="token comment">// 保留底层 const, a 是一个指向常量的指针</span>
+<span class="token keyword">auto</span> b <span class="token operator">=</span> ci<span class="token punctuation">;</span> <span class="token comment">// 忽略掉顶层 const, b 是一个整型</span>
+<span class="token keyword">const</span> <span class="token keyword">auto</span> b1 <span class="token operator">=</span> ci<span class="token punctuation">;</span> <span class="token comment">// 增加顶层 const, b 是一个整型常量</span>
+<span class="token keyword">auto</span> c <span class="token operator">=</span> cr<span class="token punctuation">;</span> <span class="token comment">// 找引用绑定的对象 ci, c 是一个整型</span>
+<span class="token keyword">auto</span> d <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span> <span class="token comment">// d 是一个整型指针</span>
+<span class="token keyword">auto</span> e <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span> <span class="token comment">// 对常量对象取地址也是一种底层 const，e 是一个指向整型常量的指针</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>f <span class="token operator">=</span> ci<span class="token punctuation">;</span> <span class="token comment">// f 是一个整型常量引用</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>g <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">*</span>h <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span> <span class="token comment">// 错误 类型不一致，i 是 int ，&amp;ci 是 const int</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h3 id="2-5-3-decltype-类型指示符"><a href="#2-5-3-decltype-类型指示符" class="headerlink" title="2.5.3 decltype 类型指示符"></a>2.5.3 decltype 类型指示符</h3><p>&emsp;有时候希望从表达式的类型推断出要定义的变量的类型，但是不想用该表达式的值作为变量的初始值。C++ 11 新标准引入了 <code>decltype</code> 类型指示符，只得到类型，而不返回结果。</p>
+<h4 id="decltype-的使用"><a href="#decltype-的使用" class="headerlink" title="decltype 的使用"></a>decltype 的使用</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">decltype</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> sum <span class="token operator">=</span> x<span class="token punctuation">;</span> <span class="token comment">// 并不实际调用 f， 将其返回类型作为变量 sum 的类型</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="和-auto-的不同"><a href="#和-auto-的不同" class="headerlink" title="和 auto 的不同"></a>和 auto 的不同</h4><p>&emsp;如果 <code>decltype</code> 使用的是<strong>变量</strong>，则返回的是该变量的类型（包括<strong>引用、顶层</strong> <code>const</code>）, <strong>注意</strong>引用只有在此处不作为绑定对象的同义词出现。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> <span class="token number">0.</span> <span class="token operator">&amp;</span>cj <span class="token operator">=</span> ci<span class="token punctuation">;</span> <span class="token comment">// 整型常量 常量引用</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>ci<span class="token punctuation">)</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 整型常量</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>cj<span class="token punctuation">)</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span> <span class="token comment">// 常量引用 绑定到 x</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="decltype-和引用"><a href="#decltype-和引用" class="headerlink" title="decltype 和引用"></a>decltype 和引用</h4><ol>
+<li>如果 <code>decltype</code> 使用的是<strong>表达式</strong>，返回的是该表达式结果对应的类型。<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">0</span><span class="token punctuation">)</span> val<span class="token punctuation">;</span> <span class="token comment">// 整型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>特殊的，<strong>如果该表达式的对象能够作为赋值语句的左值出现，那么就返回一个引用类型。</strong>因为该表达式既能得到所指的对象，而且能  作为左值给这个对象赋值，所以返回的是引用类型。</li>
+</ol>
+<ul>
+<li>解引用<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> r<span class="token punctuation">;</span> <span class="token comment">// 错误 引用必须初始化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>加括号<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">decltype</span><span class="token punctuation">(</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> r<span class="token punctuation">;</span> <span class="token comment">// 错误 引用必须初始化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>…</li>
+</ul>
 
                 
             </div>
@@ -1118,7 +1190,7 @@ r2 <span class="token operator">=</span> <span class="token number">0</span><spa
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">7.4k</span>&nbsp;字
+                class="white-color">9.1k</span>&nbsp;字
             
             
             
@@ -1218,7 +1290,7 @@ r2 <span class="token operator">=</span> <span class="token number">0</span><spa
 
 
 
-<a href="https://gitee.com/tobi4s/pic-bed/raw/master/img/53f470e8166e0222092f75a747f87c6.jpg" class="tooltipped" target="_blank"
+<a href="https://tva1.sinaimg.cn/large/e6c9d24egy1h3h2mbozj9j20u00y9q5b.jpg" class="tooltipped" target="_blank"
     data-tooltip="微信联系我：Tobi4s_" data-position="top" data-delay="50">
     <i class="fab fa-weixin"></i>
 </a>

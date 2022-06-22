@@ -378,21 +378,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-06-21
+                    2022-06-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    559
+                    722
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -417,8 +417,17 @@
             <div id="articleContent">
                 <h2 id="分离式编译"><a href="#分离式编译" class="headerlink" title="分离式编译"></a>分离式编译</h2><p>&emsp;C++语言支持<strong>分离式编译</strong>(separate compilation)机制，允许将程序分割为多个<strong>源文件</strong>，每个文件独立地进行编译。这意味着，源文件里的东西都是相互独立的，在编译时不需要和其他的源文件进行互通，只需要在编译成<strong>目标文件</strong>时，与其他的目标文件进行一次链接即可。</p>
 <h2 id="声明和定义"><a href="#声明和定义" class="headerlink" title="声明和定义"></a>声明和定义</h2><p>&emsp;如果将程序分为多个源文件，那么我们需要有在文件中<strong>共享代码</strong>（函数、变量等）的方法。为了支持分离式编译，C++ 语言将声明和定义区分开来，”定义”就是把一个符号完完整整地描述出来：它是变量还是函数，返回什么类型，需要什么参数等等。而”声明”则只是声明这个符号的存在，即告诉编译器，这个符号是在其他文件中定义的，这里先用着，链接的时候再到别的地方去找它的定义。声明需要用到 <code>extern</code> 关键字，函数的声明自带 <code>extern</code>，而变量的声明需要在变量名前添加关键字 <code>extern</code> ，而且不能显式地初始化变量，因为任何包含了显式初始化的声明都会变成定义。</p>
-<h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><p>&emsp;如果编写程序时需要用到其他文件中的许多函数或者变量，那么声明的部分会变得十分麻烦，为了简化，我们可以将声明的语句全部写到头文件中去，如果需要用到它们，那么通过 <code>#include</code> 预处理命令，预处理器在预处理阶段就会把这些需要的声明全部复制到当前的源文件中。可以看出，头文件并不参与编译，但是其中的源代码会在多个文件中进行编译。因此，由于单定义规则，避免重复定义，头文件中不能存在变量或者函数的定义，只能存在声明语句。同时，在头文件中还存在预处理变量，防止相同的代码片段重复包含的情况发生。</p>
-
+<h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><p>&emsp;如果编写程序时需要用到其他文件中的许多函数或者变量，那么声明的部分会变得十分麻烦，为了简化，我们可以将声明的语句全部写到头文件中去，如果需要用到它们，那么通过 <code>#include</code> 预处理命令，预处理器在预处理阶段就会把这些需要的声明全部复制到当前的源文件中。可以看出，头文件并不参与编译，但是其中的源代码会在多个文件中进行编译。因此，由于单定义规则，避免重复定义，头文件中不能存在变量或者函数的定义，只能存在声明语句。</p>
+<h3 id="编写自己的头文件"><a href="#编写自己的头文件" class="headerlink" title="编写自己的头文件"></a>编写自己的头文件</h3><p>&emsp;在编译阶段我们就需要用到类的信息，因此为了确保各个文件中的类的定义一致，类也通常被定义在头文件中, 以便各个文件进行使用.而且类所在头文件的名称一般与类名相同,如 <code>Sales_data</code> 类定义在 <code>Sales_data.h</code> 的头文件中.此外, 头文件允许包含其他头文件, 为了避免多次包含相同的类的定义, 常用到的技术就是<strong>头文件保护符</strong>, 通过定义<strong>预处理变量</strong>, 来控制预处理器的执行, 防止多次包含带来的危险.</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">SALES_DATA_H </span><span class="token comment">// 预处理变量</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">SALES_DATA_H</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<span class="token keyword">struct</span> <span class="token class-name">Sales_data</span><span class="token punctuation">&#123;</span>
+    std<span class="token double-colon punctuation">::</span>string bookNo<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> units_sold <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">double</span> revenue <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -892,7 +901,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">7.4k</span>&nbsp;字
+                class="white-color">9.1k</span>&nbsp;字
             
             
             
@@ -992,7 +1001,7 @@
 
 
 
-<a href="https://gitee.com/tobi4s/pic-bed/raw/master/img/53f470e8166e0222092f75a747f87c6.jpg" class="tooltipped" target="_blank"
+<a href="https://tva1.sinaimg.cn/large/e6c9d24egy1h3h2mbozj9j20u00y9q5b.jpg" class="tooltipped" target="_blank"
     data-tooltip="微信联系我：Tobi4s_" data-position="top" data-delay="50">
     <i class="fab fa-weixin"></i>
 </a>
