@@ -385,14 +385,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    12 分
                 </div>
                 
 
@@ -499,11 +499,11 @@ string s4 <span class="token operator">=</span> <span class="token string">"hell
 <li><code>islower(c)</code>: 当 c 是小写字母时返回 <code>true</code></li>
 <li><code>isupper(c)</code>: 当 c 是大写字母时返回 <code>true</code></li>
 <li><code>tolower(c)</code>: 当 c 是大写字母时返回其小写字母，否则原样返回。</li>
-<li><code>toupper(c)</code>: 当 c 是小写字母时返回其大写字母，否则原样返回。</li>
-</ul>
-<blockquote>
+<li><code>toupper(c)</code>: 当 c 是小写字母时返回其大写字母，否则原样返回。<blockquote>
 <p>C++ 将从属于 C 语言的标准库的文件由 <code>name.h</code> 命名为 <code>cname</code>, 注意 <code>cname</code> 其中定义的名字都从属于 <code>std</code> 标准库命名空间，但是 <code>name.h</code> 则不是。因此，为了方便，统一使用 <code>cname</code>。</p>
 </blockquote>
+</li>
+</ul>
 <h4 id="使用范围-for-语句"><a href="#使用范围-for-语句" class="headerlink" title="使用范围 for 语句"></a>使用范围 for 语句</h4><p>&emsp;C++ 提供了范围 <code>for</code> 语句，能够依次遍历序列中的每个元素并执行某种操作。语法格式如下，<code>expression</code> 是一个序列对象，<code>declaration</code> 是一个循环变量，用于访问序列中的每个元素。每次迭代，<code>declaration</code> 部分都会初始化为<strong>下一个元素</strong>。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">for</span> <span class="token punctuation">(</span>declaration<span class="token operator">:</span> expression<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     statement
@@ -511,12 +511,82 @@ string s4 <span class="token operator">=</span> <span class="token string">"hell
 
 <h5 id="使用范围-for-语句改变字符串中的字符"><a href="#使用范围-for-语句改变字符串中的字符" class="headerlink" title="使用范围 for 语句改变字符串中的字符"></a>使用范围 for 语句改变字符串中的字符</h5><p>&emsp;如果想要改变字符串中的字符，需要循环变量定义为引用类型。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string <span class="token function">s</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>c <span class="token operator">:</span> s<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span>c <span class="token operator">:</span> s<span class="token punctuation">)</span>
     c <span class="token operator">=</span> <span class="token function">toupper</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-cout <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// HELLO, WORLD!!!</span>
+cout <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// HELLO, WORLD!!!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="只处理一部分字符"><a href="#只处理一部分字符" class="headerlink" title="只处理一部分字符"></a>只处理一部分字符</h4><p>&emsp;C++ 提供两种方法处理字符串中的单个或者部分字符，一种是使用下标，另一种是使用<strong>迭代器</strong>，后面会进一步学习。<br>&emsp;下标运算符 <code>[]</code>, 其中接收的参数类型是 <code>string::size_type</code> ，返回该位置上的字符的引用(既能得到所指的对象，而且能作为左值给这个对象赋值)。注意下标必须大于 0，小于 <code>s.size()</code>。</p>
+<h2 id="3-3-标准库类型-vector"><a href="#3-3-标准库类型-vector" class="headerlink" title="3.3 标准库类型 vector"></a>3.3 标准库类型 vector</h2><p>&emsp;<code>vector</code> 表示<strong>给定某种类型的可变长序列</strong>，使用 <code>vector</code> 类型必须首先包含 <code>vector</code> 头文件。<br>&emsp;C++ 中有<strong>类模板</strong>和<strong>函数模板</strong>，<code>vector</code> 属于类模板, 模板本身并不是类或者函数，它是一份类或者函数的编写说明，编译器将根据模板创建类或者函数的过程称为<strong>实例化</strong>。在实例化时，通过模板名字后面的<strong>尖括号</strong>，我们需要提供一些额外信息来指定模板实例化成什么样的类或者函数。</p>
+<h3 id="3-3-1-定义和初始化-vector-对象"><a href="#3-3-1-定义和初始化-vector-对象" class="headerlink" title="3.3.1 定义和初始化 vector 对象"></a>3.3.1 定义和初始化 vector 对象</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v1<span class="token punctuation">;</span> <span class="token comment">// 元素类型为 int 的空 vector</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">v2</span><span class="token punctuation">(</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 元素类型为 int , v1 的副本</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v2 <span class="token operator">=</span> v1<span class="token punctuation">;</span> <span class="token comment">// 等价于 vector&lt;int> v2(v1)</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v3<span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// v3 包含了 3 个元素，分别是1，2，3</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v3 <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 等价于 vector&lt;int> v3&#123;1,2,3&#125;</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">v4</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// v4 包含了 n 个值初始值的元素，这里是 0</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">v5</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// v5 包含了 n 个初始值为 val 的元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="值初始化"><a href="#值初始化" class="headerlink" title="值初始化"></a>值初始化</h4><p>&emsp;<code>vector&lt;int&gt; v4(n)</code>该语句使得 v4 包含了 n 个值初始值的元素，意味着这些元素的初始值由元素类型决定，如果元素是内置类型，那么初始值为 0，如果元素是某种类类型，那么元素由类进行默认初始化，注意有些类不提供默认初始化，此时就必须提供初始值。</p>
+<h3 id="3-3-2-向-vector-对象添加元素"><a href="#3-3-2-向-vector-对象添加元素" class="headerlink" title="3.3.2 向 vector 对象添加元素"></a>3.3.2 向 vector 对象添加元素</h3><p>&emsp;使用 <code>vector&lt;int&gt; v3 = &#123;1,2,3&#125;</code> 这样的语句能快速创建少量的已知初始值的 <code>vector</code>, 但是如果数目过多，更好的方法是先创建一个空的 <code>vector</code> 对象，然后再依次添加元素进去，这种方法同样适用于当运行时才知道元素值的情况。事实上，除非所有元素都一样，我们都应当使用这种方法，因为 <code>vector</code> 可以高效快速地添加元素。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    v<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>范围 for 循环体内不应该改变其所遍历序列的大小</p>
+</blockquote>
+<h3 id="3-3-3-其他-vector-操作"><a href="#3-3-3-其他-vector-操作" class="headerlink" title="3.3.3 其他 vector 操作"></a>3.3.3 其他 vector 操作</h3><p>&emsp;<code>v.size()</code> 和 <code>v.empty()</code> 、比较 <code>vector</code> 对象、范围 <code>for</code> 循环以及下标运算符都和 <code>string</code> 类型一致，但是有几点需要注意：</p>
+<ol>
+<li><code>v.size()</code> 返回的是 <code>vector&lt;int&gt;::size_type</code>，即需要指明类型（模板类实例化以后才是类）</li>
+<li>只有当元素的值可比较时， <code>vector</code> 对象才能被比较。</li>
+<li>下标运算符只能用来访问已经存在的元素，不能用于添加元素，访问下标不存在的元素是危险行为。</li>
+</ol>
+<h2 id="3-4-迭代器介绍"><a href="#3-4-迭代器介绍" class="headerlink" title="3.4 迭代器介绍"></a>3.4 迭代器介绍</h2><p>&emsp;前文介绍到可以使用<strong>下标</strong>访问序列中部分元素，这里提供一种更通用的机制。<strong>迭代器</strong>。所有的标准库容器都能够使用迭代器，但只有少数几种能够使用下标，严格来说 <code>string</code> 类型不是容器，但是它也可以使用迭代器。</p>
+<ol>
+<li>像指针一样，迭代器提供了一种<strong>间接访问对象</strong>的方式，其对象就是容器中的元素或者 <code>string</code> 类型中的字符。</li>
+<li>使用迭代器能够访问某个对象，也能够从一个元素移动到另一个元素。</li>
+<li>迭代器分为<strong>有效和无效</strong>，有效的迭代器指向<strong>某个元素</strong>或者<strong>尾元素的下一个位置</strong>，其他情况都属于无效。</li>
+</ol>
+<h3 id="3-4-1-使用迭代器"><a href="#3-4-1-使用迭代器" class="headerlink" title="3.4.1 使用迭代器"></a>3.4.1 使用迭代器</h3><p>&emsp;拥有迭代器的容器类型，同时拥有返回迭代器的成员函数 <code>begin</code> 和 <code>end</code>。其中，<code>end</code> 指向的是<strong>尾后元素</strong>，表示处理完了容器的所有类型。当容器为空时，<code>begin</code> 和 <code>end</code> 返回<strong>同一个迭代器</strong>(指向尾后)，可以进行判空。一般来说，像 <code>size</code> 函数一样，我们并不关心返回值的类型是什么，只需要用类型说明符 <code>auto</code> 来接收。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">auto</span> b <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//指向第一个元素、尾后元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>迭代器的类型</p>
+<ol>
+<li>实际上，那些拥有迭代器的标准库类型使用 <code>iterator</code> 和 <code>const_iterator</code> 来表示迭代器的类型，如<code>vector&lt;int&gt;::iterator</code>、<code>vector&lt;int&gt;::const_iterator</code>, 类似于指针和指向常量指针的关系，如果<strong>容器或者 <code>string</code> 对象</strong>是常量，那么 <code>end</code> 和 <code>begin</code> 返回的就是 <code>const_iterator</code> , 它<strong>只能读不能写</strong>。</li>
+<li>有时，为了专门得到 <code>const_iterator</code> 来控制迭代器的读写权限，C++ 11 新标准引入了两个新函数 <code>cbegin</code> 和 <code>cend</code>, 不论容器或者 <code>string</code> 对象是否是常量，都返回 <code>const_iterator</code> 。</li>
+</ol>
+</blockquote>
+<h4 id="迭代器运算符"><a href="#迭代器运算符" class="headerlink" title="迭代器运算符"></a>迭代器运算符</h4><h5 id="访问所指元素"><a href="#访问所指元素" class="headerlink" title="访问所指元素"></a>访问所指元素</h5><p>&emsp;和指针类似，通过解引用符 <code>*</code> 来得到所指元素的引用。<strong>只有</strong>当迭代器确实指向某个元素时，才能够进行解引用访问它，否则这样的行为都是未定义的。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string s <span class="token operator">=</span> <span class="token string">"Hello, world!"</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">behin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> s<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 判空</span>
+    <span class="token keyword">auto</span> it <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">*</span>it <span class="token operator">=</span> <span class="token function">tolower</span><span class="token punctuation">(</span><span class="token operator">*</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// hello, world!</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="只处理一部分字符"><a href="#只处理一部分字符" class="headerlink" title="只处理一部分字符"></a>只处理一部分字符</h4><p>&emsp;C++ 提供两种方法处理字符串中的单个或者部分字符，一种是使用下标，另一种是使用迭代器，后面会进一步学习。</p>
+<h5 id="移动迭代器"><a href="#移动迭代器" class="headerlink" title="移动迭代器"></a>移动迭代器</h5><p>&emsp;迭代器能够使用递增运算符 <code>++</code> 来从一个元素移动到下一个元素上，递减运算符 <code>--</code> 能够移动到上一个元素上。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string s <span class="token operator">=</span> <span class="token string">"tobias"</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> it <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it <span class="token operator">!=</span> s<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token operator">*</span>it <span class="token operator">=</span> <span class="token function">toupper</span><span class="token punctuation">(</span><span class="token operator">*</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TOBIAS</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>C++ 常用 <code>!=</code> 而不是 <code>&lt;</code> 来做循环遍历的条件，因为在大部分的迭代器中都没有定义 <code>&lt;</code> 运算符。</p>
+</blockquote>
+<h5 id="结合解引用和成员访问操作"><a href="#结合解引用和成员访问操作" class="headerlink" title="结合解引用和成员访问操作"></a>结合解引用和成员访问操作</h5><p>&emsp;有时候，我们希望先对迭代器解引用然后访问所指对象的成员，如 <code>(*it).empty()</code> , 需要分两步进行，为了简化上述操作，C++ 定义了箭头运算符 <code>-&gt;</code> , 简化为 <code>it-&gt;empty()</code>。</p>
+<blockquote>
+<p>和范围 for 循环一样，迭代器循环体内不应该改变其所遍历序列的大小 </p>
+</blockquote>
+<h3 id="3-4-2-迭代器的运算"><a href="#3-4-2-迭代器的运算" class="headerlink" title="3.4.2 迭代器的运算"></a>3.4.2 迭代器的运算</h3><p>&emsp; 因为 <code>string</code> 和 <code>vector</code> 是有序的，所以它们的迭代器提供了更多的运算符，可以使得迭代器每次移动跨过更多的元素(<code>+ n, - n</code>)，同时也支持进行关系运算(<code>&gt;, &lt;, &gt;=, &lt;=</code>)。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 二分搜索</span>
+<span class="token keyword">auto</span> beg <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">auto</span> mid <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> beg<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 等价于 auto mid = text.begin() + text.size() / 2;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>mid <span class="token operator">!=</span> end <span class="token operator">&amp;&amp;</span> <span class="token operator">*</span>mid <span class="token operator">!=</span> sought<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>sought <span class="token operator">&lt;</span> <span class="token operator">*</span>mid<span class="token punctuation">)</span>
+        end <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        beg <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    mid <span class="token operator">=</span> beg <span class="token operator">+</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> beg<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>只要两个迭代器指向的是<strong>同一个容器</strong>中的元素或者尾后元素，就能够进行减法运算。<code>string</code> 和 <code>vector</code> 迭代器中都定义了带符号整数 <code>difference_type</code> ，两个迭代器相减得到的类型，表示两个迭代器之间的距离。</p>
+</blockquote>
 
                 
             </div>
@@ -991,7 +1061,7 @@ cout <span class="token operator">&lt;&lt;</span> s <span class="token operator"
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">10.5k</span>&nbsp;字
+                class="white-color">12.3k</span>&nbsp;字
             
             
             
